@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hoàng Long Land — Bất động sản khu Đông Sài Gòn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F1ECDF; --surface:#FFFFFF; --surface-2:#E7E0CF;
+    --ink:#1C2420; --muted:#5B6058; --pine:#26352B; --pine-2:#1A221C;
+    --brass:#A9793C; --brass-light:#C7A06B; --border:rgba(28,36,32,.14);
+    --on-pine:#F1ECDF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14170F; --surface:#1D231B; --surface-2:#232B20;
+      --ink:#EDE7DC; --muted:#9CA293; --pine:#0F140F; --pine-2:#0B0E0A;
+      --brass:#C7A06B; --brass-light:#D9B78A; --border:rgba(237,231,220,.16);
+      --on-pine:#EDE7DC;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14170F; --surface:#1D231B; --surface-2:#232B20;
+    --ink:#EDE7DC; --muted:#9CA293; --pine:#0F140F; --pine-2:#0B0E0A;
+    --brass:#C7A06B; --brass-light:#D9B78A; --border:rgba(237,231,220,.16);
+    --on-pine:#EDE7DC;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Work Sans",system-ui,-apple-system,sans-serif;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Fraunces",Georgia,serif; font-weight:600; letter-spacing:-.01em; margin:0;}
+  p{margin:0; color:var(--muted); line-height:1.65;}
+  a{color:inherit; text-decoration:none}
+  img,svg{display:block; max-width:100%}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  @media (max-width:640px){.wrap{padding:0 18px;}}
+
+  /* header */
+  header{position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--border);
+    padding-top:env(safe-area-inset-top,0px);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:"Fraunces",serif; font-weight:700; font-size:19px;}
+  .logo .mark{width:30px; height:30px; flex:none}
+  .nav-links{display:flex; gap:28px; font-size:15px; font-weight:500;}
+  .nav-links a{color:var(--muted); border-bottom:1px solid transparent; padding-bottom:2px; transition:color .15s, border-color .15s;}
+  .nav-links a:hover{color:var(--ink); border-color:var(--brass);}
+  .nav-cta{display:flex; align-items:center; gap:8px; background:var(--pine); color:var(--on-pine);
+    padding:9px 16px; border-radius:3px; font-size:14px; font-weight:600; white-space:nowrap;}
+  @media (max-width:860px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{background:var(--pine); color:var(--on-pine);}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center; padding:64px 0 56px;}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr; padding:40px 0 36px;}}
+  .eyebrow-row{display:flex; align-items:center; gap:10px; margin-bottom:22px; color:var(--brass-light); font-size:14px; font-weight:600;}
+  .eyebrow-row .line{width:28px; height:1px; background:var(--brass-light);}
+  .hero h1{font-size:clamp(32px,4.6vw,52px); line-height:1.08; max-width:12.5ch;}
+  .hero .sub{color:#C9CFC4; max-width:46ch; margin-top:22px; font-size:17px;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:3px; font-size:15px; font-weight:600; cursor:pointer; border:1px solid transparent;}
+  .btn-brass{background:var(--brass); color:#1A1308;}
+  .btn-ghost{border-color:rgba(241,236,223,.35); color:var(--on-pine);}
+  .btn-ghost:hover{border-color:var(--brass-light); color:var(--brass-light);}
+
+  .skyline{width:100%; height:auto}
+
+  /* stat strip */
+  .strip{background:var(--surface-2); border-bottom:1px solid var(--border);}
+  .strip-row{display:grid; grid-template-columns:repeat(4,1fr); padding:26px 0;}
+  .strip-row > div{padding:0 22px; border-left:1px solid var(--border);}
+  .strip-row > div:first-child{border-left:none; padding-left:0;}
+  @media (max-width:760px){.strip-row{grid-template-columns:1fr 1fr; row-gap:22px;} .strip-row > div:nth-child(3){border-left:none;}}
+  .strip-num{font-family:"Fraunces",serif; font-size:30px; font-weight:600; color:var(--pine);}
+  :root[data-theme="dark"] .strip-num, body.dark-fallback .strip-num{color:var(--brass-light);}
+  .strip-label{font-size:13.5px; color:var(--muted); margin-top:4px;}
+
+  /* section heading */
+  .sec{padding:68px 0;}
+  @media (max-width:640px){.sec{padding:48px 0;}}
+  .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:36px; flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(24px,3vw,34px); max-width:16ch;}
+  .sec-head p{max-width:40ch; font-size:15.5px;}
+
+  /* listings shelf */
+  .shelf{display:grid; grid-auto-flow:column; grid-auto-columns:78%; gap:18px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x proximity; margin:0 -24px; padding-left:24px; padding-right:24px;}
+  @media (min-width:860px){.shelf{grid-auto-columns:minmax(0,1fr); grid-auto-flow:row; grid-template-columns:repeat(4,1fr); overflow:visible; margin:0; padding:0;}}
+  .card{scroll-snap-align:start; background:var(--surface); border:1px solid var(--border); border-radius:4px; overflow:hidden; display:flex; flex-direction:column;}
+  .card-art{height:132px; position:relative; background:linear-gradient(160deg,var(--pine),var(--pine-2));}
+  .card-tag{position:absolute; top:12px; left:12px; background:var(--brass); color:#1A1308; font-size:12px; font-weight:700; padding:4px 9px; border-radius:2px;}
+  .card-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card-body h3{font-size:17px; font-weight:600;}
+  .card-meta{font-size:13.5px; color:var(--muted); display:flex; gap:6px; align-items:center;}
+  .card-price{margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:baseline;}
+  .card-price b{font-family:"Fraunces",serif; font-size:19px; color:var(--pine);}
+  :root[data-theme="dark"] .card-price b{color:var(--brass-light)}
+  .card-price span{font-size:12.5px; color:var(--muted);}
+
+  /* process */
+  .process{background:var(--surface-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .proc-grid{display:grid; grid-template-columns:.8fr 1.2fr; gap:48px;}
+  @media (max-width:860px){.proc-grid{grid-template-columns:1fr; gap:28px;}}
+  .steps{display:flex; flex-direction:column;}
+  .step{display:grid; grid-template-columns:40px 1fr; gap:18px; padding:22px 0; border-top:1px solid var(--border);}
+  .step:last-child{border-bottom:1px solid var(--border);}
+  .step-num{font-family:"Fraunces",serif; font-size:15px; color:var(--brass); font-weight:600;}
+  .step h3{font-size:17px; font-weight:600; margin-bottom:6px;}
+  .step p{font-size:14.5px;}
+
+  /* why us */
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  @media (max-width:860px){.why-grid{grid-template-columns:1fr; gap:30px;}}
+  .quote{font-family:"Fraunces",serif; font-style:italic; font-size:clamp(20px,2.6vw,27px); line-height:1.4; color:var(--ink); max-width:20ch;}
+  .quote-by{margin-top:18px; font-size:14px; color:var(--muted); font-style:normal;}
+  .why-list{display:flex; flex-direction:column; gap:22px;}
+  .why-item{display:flex; gap:14px;}
+  .check{flex:none; width:22px; height:22px; margin-top:2px;}
+  .why-item h3{font-size:16px; font-weight:600; margin-bottom:5px;}
+  .why-item p{font-size:14.5px;}
+
+  /* contact */
+  .contact{background:var(--pine-2); color:var(--on-pine);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; padding:68px 0;}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr; gap:34px; padding:48px 0;}}
+  .contact h2{color:var(--on-pine); font-size:clamp(24px,3vw,32px); max-width:14ch; margin-bottom:18px;}
+  .contact-row{display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(241,236,223,.14);}
+  .contact-row:last-child{border-bottom:1px solid rgba(241,236,223,.14);}
+  .contact-row svg{flex:none; margin-top:2px; width:20px; height:20px;}
+  .contact-row .lbl{font-size:12.5px; color:var(--brass-light); margin-bottom:3px;}
+  .contact-row .val{font-size:15px; color:var(--on-pine);}
+  .social-row{display:flex; gap:10px; margin-top:22px;}
+  .social{width:38px; height:38px; border-radius:50%; border:1px solid rgba(241,236,223,.3); display:flex; align-items:center; justify-content:center;}
+  .social svg{width:17px; height:17px;}
+  .map-card{background:var(--pine); border:1px solid rgba(241,236,223,.14); border-radius:4px; padding:20px; display:flex; flex-direction:column; gap:14px;}
+  .map-art{height:160px; border-radius:3px; position:relative; overflow:hidden;
+    background:
+      repeating-linear-gradient(0deg, rgba(241,236,223,.05) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(241,236,223,.05) 0 1px, transparent 1px 28px),
+      var(--pine-2);}
+  .map-pin{position:absolute; top:46%; left:52%; transform:translate(-50%,-100%);}
+  .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;}
+  .badge{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--brass-light); border:1px solid rgba(241,236,223,.22); padding:6px 10px; border-radius:20px;}
+  .badge svg{width:13px; height:13px;}
+
+  footer{background:var(--pine-2); border-top:1px solid rgba(241,236,223,.1); padding:22px 0 calc(22px + env(safe-area-inset-bottom,0px));}
+  .foot-row{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12.5px; color:#8A9183;}
+  .foot-row b{color:var(--brass-light); font-weight:600;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 30 30" fill="none"><path d="M15 3 L27 13 V27 H3 V13 Z" stroke="var(--brass)" stroke-width="2" fill="none"/><rect x="12.5" y="17" width="5" height="10" fill="var(--brass)"/></svg>
+      Hoàng Long Land
+    </div>
+    <nav class="nav-links">
+      <a href="#du-an">Dự án</a>
+      <a href="#quy-trinh">Quy trình</a>
+      <a href="#vi-sao">Vì sao chọn chúng tôi</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <a class="nav-cta" href="tel:0909123456">Gọi 090 912 3456</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-row"><span class="line"></span>Khu Đông &amp; Nam TP. Hồ Chí Minh</div>
+      <h1>Mỗi căn nhà, một khu phố chúng tôi đã đi bộ qua.</h1>
+      <p class="sub">Hoàng Long Land chọn lọc và khảo sát trực tiếp từng căn hộ, nhà phố trước khi giới thiệu — không đăng lại tin chưa kiểm chứng.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-brass" href="#du-an">Xem dự án đang mở bán</a>
+        <a class="btn btn-ghost" href="#lien-he">Nhận tư vấn miễn phí</a>
+      </div>
+    </div>
+    <svg class="skyline" viewBox="0 0 420 300" fill="none">
+      <rect x="40" y="150" width="60" height="130" fill="#324539"/>
+      <rect x="110" y="90" width="70" height="190" fill="#3C5144"/>
+      <rect x="190" y="130" width="55" height="150" fill="#2C3C33"/>
+      <rect x="255" y="60" width="75" height="220" fill="#44594B"/>
+      <rect x="340" y="110" width="50" height="170" fill="#324539"/>
+      <g stroke="#A9793C" stroke-width="1.4" opacity=".85">
+        <path d="M120 110h50M120 130h50M120 150h50M120 170h50M120 190h50M120 210h50M120 230h50M120 250h50"/>
+        <path d="M265 80h55M265 100h55M265 120h55M265 140h55M265 160h55M265 180h55M265 200h55M265 220h55M265 240h55M265 260h55"/>
+      </g>
+      <rect x="40" y="150" width="60" height="130" fill="none" stroke="#1A221C"/>
+      <rect x="190" y="130" width="55" height="150" fill="none" stroke="#1A221C"/>
+      <rect x="340" y="110" width="50" height="170" fill="none" stroke="#1A221C"/>
+    </svg>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap strip-row">
+    <div><div class="strip-num">180+</div><div class="strip-label">Giao dịch đã hoàn tất</div></div>
+    <div><div class="strip-num">6 năm</div><div class="strip-label">Hoạt động tại khu Đông Sài Gòn</div></div>
+    <div><div class="strip-num">48 giờ</div><div class="strip-label">Thời gian sắp lịch xem nhà</div></div>
+    <div><div class="strip-num">0đ</div><div class="strip-label">Phí môi giới cho người mua</div></div>
+  </div>
+</section>
+
+<section class="sec" id="du-an">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Dự án đang mở bán</h2>
+      <p>Cập nhật theo tuần, mỗi tin đăng đều do agent của Hoàng Long Land trực tiếp khảo sát.</p>
+    </div>
+    <div class="shelf">
+      <div class="card">
+        <div class="card-art"><span class="card-tag">Căn hộ</span></div>
+        <div class="card-body">
+          <h3>Precia Đông Sài Gòn</h3>
+          <div class="card-meta">2PN · 68 m² · TP. Thủ Đức</div>
+          <div class="card-price"><b>2,9 tỷ</b><span>≈ 42,6 tr/m²</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-art"><span class="card-tag">Nhà phố</span></div>
+        <div class="card-body">
+          <h3>Liên khu 5–11</h3>
+          <div class="card-meta">1 trệt 3 lầu · 80 m² · Bình Tân</div>
+          <div class="card-price"><b>6,8 tỷ</b><span>≈ 85 tr/m²</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-art"><span class="card-tag">Căn hộ</span></div>
+        <div class="card-body">
+          <h3>The Gió Riverside</h3>
+          <div class="card-meta">3PN · 95 m² · Quận 7</div>
+          <div class="card-price"><b>5,4 tỷ</b><span>≈ 56,8 tr/m²</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-art"><span class="card-tag">Đất nền</span></div>
+        <div class="card-body">
+          <h3>Đất thổ cư Long Phước</h3>
+          <div class="card-meta">100 m² · Sổ riêng · TP. Thủ Đức</div>
+          <div class="card-price"><b>3,2 tỷ</b><span>≈ 32 tr/m²</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="quy-trinh">
+  <div class="wrap sec">
+    <div class="proc-grid">
+      <div>
+        <h2 style="font-size:clamp(24px,3vw,32px); max-width:9ch;">Quy trình 4 bước</h2>
+        <p style="margin-top:16px; font-size:15px; max-width:34ch;">Từ lúc nêu nhu cầu đến lúc nhận chìa khóa, Hoàng Long Land đồng hành ở mọi bước.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div><h3>Nêu nhu cầu</h3><p>Diện tích, ngân sách và khu vực mong muốn — trao đổi qua điện thoại hoặc Zalo trong 10 phút.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div><h3>Nhận danh sách phù hợp</h3><p>Chọn lọc từ kho dự án đã thẩm định, không gửi tràn lan tin chưa kiểm chứng.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div><h3>Xem nhà thực tế</h3><p>Sắp lịch xem trong vòng 48 giờ, agent phụ trách khu vực đó đi cùng.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div><h3>Hoàn tất giao dịch</h3><p>Hỗ trợ pháp lý, công chứng và kết nối ngân hàng hỗ trợ vay vốn.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="vi-sao">
+  <div class="wrap why-grid">
+    <div>
+      <p class="quote">“Mua nhà không nên là một giao dịch — nên là một người hiểu khu bạn sắp sống.”</p>
+      <p class="quote-by">— Triết lý vận hành tại Hoàng Long Land</p>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <svg class="check" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="var(--brass)" stroke-width="1.4"/><path d="M6.5 11.3l2.8 2.8L15.5 8" stroke="var(--brass)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>Khảo sát trực tiếp từng căn</h3><p>Agent đến tận nơi trước khi đăng tin, không lấy lại ảnh và mô tả từ nguồn khác.</p></div>
+      </div>
+      <div class="why-item">
+        <svg class="check" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="var(--brass)" stroke-width="1.4"/><path d="M6.5 11.3l2.8 2.8L15.5 8" stroke="var(--brass)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>Chỉ giới thiệu khu vực am hiểu</h3><p>Danh mục dự án giới hạn ở khu Đông &amp; Nam TP.HCM — nơi đội ngũ thực sự nắm giá thị trường.</p></div>
+      </div>
+      <div class="why-item">
+        <svg class="check" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="var(--brass)" stroke-width="1.4"/><path d="M6.5 11.3l2.8 2.8L15.5 8" stroke="var(--brass)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>Đồng hành đến khi ký kết</h3><p>Hỗ trợ pháp lý, công chứng và vay vốn xuyên suốt, không phát sinh phí môi giới cho người mua.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="lien-he">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Ghé văn phòng hoặc gọi trực tiếp</h2>
+      <div class="contact-row">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M3 4h4l2 5-2.5 1.5a11 11 0 005 5L13 13l5 2v4c0 .6-.4 1-1 1C9.6 20 0 10.4 0 3c0-.6.4-1 1-1h2" stroke="var(--brass-light)" stroke-width="1.3"/></svg>
+        <div><div class="lbl">Hotline</div><div class="val">090 912 3456</div></div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M2 5l8 6 8-6M2 5v10h16V5M2 5h16" stroke="var(--brass-light)" stroke-width="1.3"/></svg>
+        <div><div class="lbl">Email</div><div class="val">lienhe@hoanglongland.vn</div></div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 19s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" stroke="var(--brass-light)" stroke-width="1.3"/><circle cx="10" cy="8" r="2.3" stroke="var(--brass-light)" stroke-width="1.3"/></svg>
+        <div><div class="lbl">Văn phòng</div><div class="val">12 Đường số 3, P. Phú Hữu, TP. Thủ Đức, TP.HCM</div></div>
+      </div>
+      <div class="social-row">
+        <a class="social" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.3h-2.3C12.6 5.3 11 7 11 9.3V11H9v3h2v7h3v-7h2.2l.5-3H14V9.4c0-.6.4-.9 1-.9z" fill="var(--on-pine)"/></svg></a>
+        <a class="social" href="#" aria-label="Zalo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="var(--on-pine)" stroke-width="1.4"/><text x="12" y="15" font-size="7.5" fill="var(--on-pine)" text-anchor="middle" font-family="Work Sans" font-weight="700">Zalo</text></svg></a>
+      </div>
+    </div>
+    <div class="map-card">
+      <div class="map-art">
+        <svg class="map-pin" width="26" height="34" viewBox="0 0 26 34" fill="none"><path d="M13 0C5.8 0 0 5.8 0 13c0 9.7 13 21 13 21s13-11.3 13-21C26 5.8 20.2 0 13 0z" fill="var(--brass)"/><circle cx="13" cy="13" r="5" fill="var(--pine-2)"/></svg>
+      </div>
+      <div class="badges">
+        <div class="badge"><svg viewBox="0 0 20 20" fill="none"><path d="M10 19s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" stroke="var(--brass-light)" stroke-width="1.5"/></svg>Đã khai báo Google Maps doanh nghiệp</div>
+        <div class="badge"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="1.5" stroke="var(--brass-light)" stroke-width="1.5"/><path d="M6.5 9V6a3.5 3.5 0 017 0v3" stroke="var(--brass-light)" stroke-width="1.5"/></svg>Bảo mật SSL/HTTPS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Hoàng Long Land — dự án minh họa trong báo cáo thực tập, không phải website thật của khách hàng.</span>
+    <span>Thiết kế &amp; triển khai bởi <b>Bộ phận Triển khai Phần mềm &amp; Website — Vina Software</b></span>
+  </div>
+</footer>
+
+</body>
+</html>
